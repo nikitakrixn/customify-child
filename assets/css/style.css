@@ -1,0 +1,45 @@
+.ajax-more {
+	display: block;
+	width: 320px;
+	height: 50px;
+	text-align: center;
+	line-height: 50px;
+	margin: 0px auto;
+	font-size: 16px;
+	color: #1e4b75;
+	text-transform: uppercase;
+	font-weight: 700;
+	border: 2px solid #1e4b75;
+}
+
+.recovery {
+	width: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	padding: 0px 16px 0px 0px;
+}
+
+.recovery-link {
+	display: block;
+}
+
+.cover img {
+	max-width: 150px !important;
+}
+
+.custom-pagination {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.custom-pagination__page {
+	display: block;
+	margin: 0px 5px 0px 5px;
+}
+
+.custom-pagination__dots {
+	display: block;
+}

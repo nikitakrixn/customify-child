@@ -1,0 +1,15 @@
+.card_list {
+    margin: 0;
+    color: #333333;
+    padding: 0;
+    font-size: 14px;
+    list-style-type: none;
+}
+
+.card_item {
+    padding: 2px 0;
+}
+
+.card_item span {
+    font-weight: 700;
+}

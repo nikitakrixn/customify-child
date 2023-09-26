@@ -1,0 +1,150 @@
+<script>
+    /*
+	Автозаполнение второй формы ACF
+	*/
+jQuery(document).ready(function(){
+
+    <?php
+    $current_user = wp_get_current_user();
+
+    $current_user_roles = $current_user -> roles;
+    $is_admin = $is_author = 0;
+    foreach ($current_user_roles as $current_user_role) {
+
+        if($current_user_role == 'administrator') {
+
+            $is_admin = 1;
+        }
+        if($current_user_role == 'author')
+			$is_author = 1;
+    }
+	
+    $user_id = get_current_user_id();
+//    if($is_admin || wc_memberships_is_user_active_member( $user_id, 'tarif-demo-razmeshhenie' ) || wc_memberships_is_user_active_member( $user_id, 'luxe-razmeshhenie-tz' ) || wc_memberships_is_user_active_member( $user_id, 'tarif-pro-razmeshhenie' ))
+    	if(!$is_admin){
+    	if(wc_memberships_is_user_active_member( $user_id))
+    {
+    ?>
+    jQuery('.elementor-element-88f198a, .elementor-element-71356d7').remove();
+    <?php
+    }
+        else
+        {
+            ?>
+            jQuery('.elementor-element-0693d3e').remove();
+            <?php
+
+        }
+	}
+    ?>
+    
+	let sel1 = jQuery('#acf-field_6218edb128c9c option:selected').text();
+	jQuery(jQuery('.acf-field-61de9d8ee8021').find(':contains("'+sel1+'")')[2]).find('input').attr('checked', 'checked');
+	
+	let sel2 = jQuery('#acf-field_616fd4f33b984 option:selected').text();
+	jQuery(jQuery('.acf-field-61de9dc7e8022').find(':contains("'+sel2+'")')[2]).find('input').attr('checked', 'checked');
+
+	let sel3 = jQuery('#acf-field_616fd5153b985 option:selected').text();
+	jQuery('#acf-field_611bc68d51131').find('option:contains("'+sel3+'")').attr('selected', 'true').text(sel3);
+
+	let colvo = jQuery('#acf-field_616fd4bd3b983').val();
+	jQuery('#acf-field_60eaa5be6143b').val(colvo);
+
+	let planB = jQuery('#acf-field_62190679925fe').val();
+	jQuery('#acf-field_60eaa50561439').val(planB);
+
+	let name = jQuery('#acf-field_616fd4a13b980').val();
+	jQuery('#acf-field_6167cae024660').val(name);
+
+	let email = jQuery('#acf-field_616fd4b33b982').val();
+	jQuery('#acf-field_6167caf724661').val(email);
+
+	let number = jQuery('#acf-field_616fd4ac3b981').val();
+	jQuery('#acf-field_6167cb0424662').val(number);
+
+
+	let sel2_1 = jQuery('#acf-field_6218ee0128c9d').text();
+	jQuery(jQuery('.acf-field-6219b52d0662a').find(':contains("'+sel2_1+'")')[2]).find('input').attr('checked', 'checked');
+	
+	jQuery('.acf-field-6218ed7128c9b input:radio').on('blur', function(){
+		let odejda = jQuery('.acf-field-6218ed7128c9b').find('label.selected input:radio').val();
+		
+		jQuery('.acf-field-6219b05806627').find('input:radio').each(function(){
+				jQuery(this).removeAttr('checked');
+				jQuery(this).parent().removeClass('selected');
+			});
+			jQuery('.acf-field-6219b05806627').find('label').on('click', function(e){
+				//~ e.preventDefault();
+				const pageOffset = pageYOffset;
+        window.scrollTo({
+            top: pageOffset
+        });
+				});
+		console.log(odejda);
+		if(odejda == 'Одежда')
+		{
+			jQuery(jQuery('.acf-field-6219b05806627').find(':contains("Пошив одежды")')[3]).click();
+			//~ jQuery(jQuery('.acf-field-6219b05806627').find(':contains("Пошив одежды")')[3]).addClass('selected').find('input').attr('checked', 'checked');
+			console.log(jQuery('.acf-field-6219b05806627').find(':contains("Пошив одежды")'));
+		}
+		else if(odejda == 'Другие виды изделий')
+		{
+			console.log(jQuery('.acf-field-6219b05806627').find(':contains("Пошив других видов изделий")'));
+			jQuery(jQuery('.acf-field-6219b05806627').find(':contains("Пошив других видов изделий")')[3]).click();
+			//~ jQuery(jQuery('.acf-field-6219b05806627').find(':contains("Пошив других видов изделий")')[3]).addClass('selected').find('input').attr('checked', 'checked');
+		}
+	});
+	jQuery('#acf-field_6218edb128c9c').on('blur', function(){
+		let sel1 = jQuery('#acf-field_6218edb128c9c option:selected').text();
+		
+		jQuery(jQuery('.acf-field-61de9d8ee8021').find(':contains("'+sel1+'")')[2]).find('input').attr('checked', 'checked');
+	});
+	jQuery('#acf-field_616fd4f33b984').on('blur', function(){
+		let sel2 = jQuery('#acf-field_616fd4f33b984 option:selected').text();
+		
+		jQuery(jQuery('.acf-field-61de9dc7e8022').find(':contains("'+sel2+'")')[2]).find('input').attr('checked', 'checked');
+	});
+	jQuery('#acf-field_616fd5153b985').on('blur', function(){
+		let sel3 = jQuery('#acf-field_616fd5153b985 option:selected').text();
+		
+		jQuery('#acf-field_611bc68d51131').find('option:contains("'+sel3+'")').attr('selected', 'true').text(sel3);
+	});
+	jQuery('#acf-field_616fd4bd3b983').on('blur', function(){
+		let colvo = jQuery(this).val();
+		
+		jQuery('#acf-field_60eaa5be6143b').val(colvo);
+	});
+	jQuery('#acf-field_62190679925fe').on('blur', function(){
+		let planB = jQuery(this).val();
+		
+		jQuery('#acf-field_60eaa50561439').val(planB);
+	});
+	jQuery('#acf-field_616fd4a13b980').on('blur', function(){
+		let name = jQuery(this).val();
+		
+		jQuery('#acf-field_6167cae024660').val(name);
+	});
+	jQuery('#acf-field_616fd4b33b982').on('blur', function(){
+		let email = jQuery(this).val();
+		
+		jQuery('#acf-field_6167caf724661').val(email);
+	});
+	jQuery('#acf-field_616fd4ac3b981').on('blur', function(){
+		let number = jQuery(this).val();
+		
+		jQuery('#acf-field_6167cb0424662').val(number);
+	});
+	
+	
+	
+	
+	
+	
+	
+	jQuery('#acf-field_6218ee0128c9d').on('blur', function(){
+		let sel2_1 = jQuery(this).text();
+		
+		jQuery(jQuery('.acf-field-6219b52d0662a').find(':contains("'+sel2_1+'")')[2]).find('input').attr('checked', 'checked');
+	});
+});
+</script>
